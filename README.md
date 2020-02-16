@@ -1,11 +1,31 @@
+
+![](https://images.manning.com/180/240/resize/book/5/17c1124-214f-4307-b4fe-fd961a9a31f4/McNamara-Rust-MEAP-HI.png)
+
 # Welcome to _Rust in Action_ source code
 
 This source code repository is a companion to the [Rust in Action][] book available from Manning Publications.
 
 
+
+# Supporting the book
+
+Most book sales are generated on the basis of trusted referrals and recommendations.
+Please add your rating or review on [Goodreads](https://www.goodreads.com/book/show/48496405-rust-in-action), [Amazon][] or perhaps even your own blog.
+
+If you haven't got it yet, here are some links so that you can buy _Rust in Action_ for yourself: 
+
+- [direct from the publisher][Rust in Action] (recommended)
+- [Amazon][], or one of its subsidiaries like [Book Depository][]
+- [Books-a-Million](https://www.booksamillion.com/p/9781617294556)
+- [Barnes & Noble](https://www.barnesandnoble.com/w/rust-in-action-tim-mcnamara/1134424547)
+- perhaps even your local bookshop via [indiebound][]!
+
 # Providing feedback
 
-The issue tracker is open, but please use livebook.manning.com/books/rust-in-action to submit issues.
+The issue tracker is open, and is useful for minor bug reports.
+
+Please use https://livebook.manning.com/books/rust-in-action to submit issues for anything larger, especially if you want to discuss the book's text rather than a specific line of code.
+That way you can communicate with a community of thousands of other readers.
 
 
 # Contact the author
@@ -15,4 +35,7 @@ The best channel is [Twitter](https://twitter.com/timClicks) and my email addres
 I'm also active on [Reddit](https://www.reddit.com/user/timClicks), [LinkedIn](https://www.linkedin.com/in/timmcnamaranz/) and the [Rust user forum](https://users.rust-lang.org/u/timclicks) and the discord servers for Rust. 
 
 
+[Amazon]: https://www.amazon.com/Rust-Action-Tim-McNamara/dp/1617294551/
+[Book Depository]: https://www.bookdepository.com/Rust-Action-Ts-McNamara/9781617294556
+[indiebound]: http://www.indiebound.org/book/9781617294556
 [Rust in Action]: https://www.manning.com/books/rust-in-action?a_aid=rust&a_bid=0367c58f&chan=source_code
