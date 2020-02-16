@@ -1,0 +1,16 @@
+[package]
+name = "ch1-time-api"
+version = "0.1.0"
+authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+
+[dependencies]
+chrono = "0.4.0"
+rocket = "0.3.0"
+rocket_codegen = "0.3.0"
+serde = "1.0"
+serde_derive = "1.0"
+
+[dependencies.rocket_contrib]
+version = "0.3.0"
+default-features = false
+features = ["json"]

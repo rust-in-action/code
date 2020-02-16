@@ -1,0 +1,35 @@
+[package]
+name = "fledgeos"
+version = "0.1.0"
+authors = ["Tim McNamara <tim.mcnamara@canonical.com>"]
+edition = "2018"
+
+[dependencies]
+bootloader = "0.7"
+#bootloader = { package = "bootloader_precompiled", version = "0.3" }
+heapless = "0.4"
+pic8259_simple = "0.1"
+spin = "0.4"
+x86_64 = "0.4"
+
+
+#llvm-tools = "*"
+
+[dependencies.lazy_static]
+version = "1.0"
+features = ["spin_no_std"]
+
+[profile.release]
+panic = "abort"
+
+[profile.dev]
+panic = "abort"
+
+[package.metadata.bootimage]
+default-target = "fledge.json"
+#output = "fledgeos.bin"
+
+#[package.metadata.bootimage.bootloader]
+#name = "bootloader_precompiled"
+#target = "fledge.json"
+#target ="x64_64-bootloader.json"

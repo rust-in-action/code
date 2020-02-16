@@ -1,0 +1,7 @@
+[package]
+name = "ch5-q"
+version = "0.1.0"
+authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+
+[dependencies]
+num = "*"

@@ -1,0 +1,6 @@
+[package]
+name = "ch5-message-store"
+version = "0.1.0"
+authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+
+[dependencies]

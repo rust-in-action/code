@@ -1,0 +1,12 @@
+[package]
+name = "fledgeos"
+version = "0.1.0"
+authors = ["Tim McNamara <paperless@timmcnamara.co.nz>"]
+edition = "2018"
+
+[dependencies]
+bootloader = "0.7"
+x86_64 = "0.8"
+
+[package.metadata.bootimage]
+default-target = "fledge.json"

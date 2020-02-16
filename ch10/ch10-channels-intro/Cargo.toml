@@ -1,0 +1,8 @@
+[package]
+name = "ch10-channels-intro"
+version = "0.1.0"
+authors = ["Tim McNamara <paperless@timmcnamara.co.nz>"]
+edition = "2018"
+
+[dependencies]
+crossbeam = "0.7"

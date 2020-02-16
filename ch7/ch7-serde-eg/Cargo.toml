@@ -1,0 +1,11 @@
+[package]
+name = "ch7-serde-eg"
+version = "0.1.0"
+authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+
+[dependencies]
+bincode = "1"
+serde = "1"
+serde_derive = "1"
+serde_cbor = "0.8"
+serde_json = "1"

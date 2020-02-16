@@ -1,0 +1,18 @@
+[package]
+name = "actionkv"
+version = "0.1.0"
+authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+
+[dependencies]
+crc = "1.7"
+byteorder = "1.2"
+serde = "1"
+serde_derive = "1"
+
+[lib]
+name = "libactionkv"
+path = "src/lib.rs"
+
+[[bin]] # [[]] is needed because of TOML's array syntax. A crate may have multiple binaries, but only a single library.
+name = "akv_mem"
+path = "src/akv_mem.rs"

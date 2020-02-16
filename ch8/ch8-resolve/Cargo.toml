@@ -1,0 +1,13 @@
+[package]
+name = "resolve"
+version = "0.1.0"
+authors = ["Tim McNamara <paperless@timmcnamara.co.nz>"]
+edition = "2018"
+
+[dependencies]
+rand = "0.6"
+clap = "2.33"
+
+[dependencies.trust-dns]
+version = "0.16"
+default_features = false

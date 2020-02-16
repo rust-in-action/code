@@ -1,0 +1,7 @@
+[package]
+name = "globalerror"
+version = "0.1.0"
+authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+
+[dependencies]
+rand = "0.3"

@@ -1,0 +1,29 @@
+VAGRANTFILE_VERSION = "2"
+
+$provision_external = <<SCRIPT
+sudo apt-get -qq update 
+sudo apt-get install -q -y curl
+
+curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
+SCRIPT
+
+# $provision_internal  = <<SCRIPT
+# cd ~
+# mkdir code
+# sudo mount -t vboxsf code ./code
+# SCRIPT
+
+
+Vagrant.configure(VAGRANTFILE_VERSION) do |config|
+
+    config.vm.provider "virtualbox" do |v|
+        v.name = "rust_in_action_ch09"
+        v.linked_clone = true
+    end
+    
+    config.vm.box = "bento/ubuntu-17.04-i386"
+    config.vm.synced_folder ".", "/ch09/"
+    config.vm.post_up_message = "Hope that you're enjoying Rust in Action!\n-TS McNamara"
+    config.vm.provision "shell", inline: $provision_external
+    #config.vm.provision "shell", inline: $provision_internal
+end

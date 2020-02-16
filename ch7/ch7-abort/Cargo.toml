@@ -1,0 +1,9 @@
+[package]
+name = "ch7-abort"
+version = "0.1.0"
+authors = ["TS McNamara <code@timmcnamara.co.nz>"]
+
+[dependencies]
+
+[profile.release]
+panic = "abort"
