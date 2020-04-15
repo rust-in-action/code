@@ -1,16 +1,17 @@
 #![feature(plugin)] // <1>
-#![plugin(rocket_codegen)] // <1>
+#![feature(proc_macro_hygiene, decl_macro)] // <1>
 
 extern crate serde;          // <2>
 extern crate chrono;         // <2>
+#[macro_use]
 extern crate rocket;         // <2>
 extern crate rocket_contrib; // <2>
 
-#[macro_use]  // <3> Syntax to indicate that we want to import macros from another module
+#[macro_use]                 // <3> Syntax to indicate that we want to import macros from another module
 extern crate serde_derive;   // <3>
 
 use chrono::prelude::*; // <4> brings all exported members into local scope (e.g. DateTime and Utc)
-use rocket_contrib::{Json}; // <5> bring single member into local scope
+use rocket_contrib::json::{Json}; // <5> bring single member into local scope
 
 #[derive(Serialize)] // <6> Automatically generate a string representation of this struct (which will be used as JSON)
 struct Timestamp { // <7> Syntax to create a custom type 
