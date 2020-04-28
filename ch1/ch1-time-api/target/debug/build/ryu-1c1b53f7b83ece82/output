@@ -1,0 +1,3 @@
+cargo:rustc-cfg=integer128
+cargo:rustc-cfg=must_use_return
+cargo:rustc-cfg=maybe_uninit
