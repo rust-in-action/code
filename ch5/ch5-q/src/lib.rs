@@ -8,6 +8,8 @@ pub struct Q7(i8); // tuple struct holding a i8 value
 
 impl From<f64> for Q7 {
     fn from (n: f64) -> Self {
+        // assert!(n >= -1.0);
+        // assert!(n <= 1.0);
         if n >= 1.0 { // out of bounds numbers are coerced to the maximum of the range
             Q7(127)
         } else if n <= -1.0 {

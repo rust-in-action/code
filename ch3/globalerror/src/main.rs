@@ -1,28 +1,27 @@
-extern crate rand;
-use ::rand::Rng;
+use rand::{random}; // <1>
 
-static mut ERROR: isize = 0;
+static mut ERROR: isize = 0; // <2>
 
-struct File;
+struct File; // <3>
 
 #[allow(unused_variables)]
-fn read(f: &File, save_to: Vec<u8>) -> usize {
-    if rand::thread_rng().gen_weighted_bool(10_000) {
+fn read(f: &File, save_to: &mut Vec<u8>) -> usize {
+    if random() && random() && random() { // <4>
         unsafe {
-            ERROR = 1;
+            ERROR = 1; // <5>
         }
     }
 
-    0 // <> Always read() 0 bytes  
+    0 // <6>
 }
 
-#[allow(unused_mut)]
+#[allow(unused_mut)] // <7>
 fn main() {
     let mut f = File;
     let mut buffer = vec![];
 
-    read(&f, buffer);
-    unsafe {
+    read(&f, &mut buffer);
+    unsafe { // <8>
         if ERROR != 0 {
             panic!("An error has occurred!")
         }

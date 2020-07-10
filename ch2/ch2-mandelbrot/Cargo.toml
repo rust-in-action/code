@@ -1,0 +1,8 @@
+[package]
+name = "ch2-mandelbrot"
+version = "0.1.0"
+authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2018"
+
+[dependencies]
+num = "0.3"
