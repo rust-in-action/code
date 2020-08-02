@@ -2,6 +2,7 @@
 name = "actionkv"
 version = "0.1.0"
 authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+edition = "2018"
 
 [dependencies]
 crc = "1.7"
@@ -9,6 +10,9 @@ byteorder = "1.2"
 serde = "1"
 serde_derive = "1"
 bincode = "*"
+
+[dev-dependencies]
+tempdir = "0.3"
 
 [lib]
 name = "libactionkv"

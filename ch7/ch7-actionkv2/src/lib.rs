@@ -171,9 +171,7 @@ impl ActionKV {
 
         let checksum = crc32::checksum_ieee(&tmp);
 
-        let next_byte = SeekFrom::End(0);
-        let current_position = f.seek(SeekFrom::Current(0))?;
-        f.seek(next_byte)?;
+        let current_position = f.seek(SeekFrom::End(0))?;
         f.write_u32::<LittleEndian>(checksum)?;
         f.write_u32::<LittleEndian>(key_len as u32)?;
         f.write_u32::<LittleEndian>(val_len as u32)?;
@@ -192,4 +190,54 @@ impl ActionKV {
         self.insert(key, b"")
     }
 
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::ActionKV;
+    use tempdir::TempDir;
+    use std::collections::HashSet;
+
+    #[test]
+    fn test_index_maintenance() {
+        let key1 = "a".as_bytes();
+        let val1 = "1".as_bytes();
+
+        let key2 = "b".as_bytes();
+        let val2 = "2".as_bytes();
+
+        let key3 = "c".as_bytes();
+        let val3 = "3".as_bytes();
+
+        let key4 = "d".as_bytes();
+        let val4 = "4".as_bytes();
+
+        let dir = TempDir::new("testing").expect("failed to create temp dir");
+        let path = dir.path().join("foo.txt");
+
+        let mut store = ActionKV::open(path.as_path()).expect("failed to create store");
+
+        store.insert(key1, val1).expect("failed to insert key1");
+        store.insert(key2, val2).expect("failed to insert key2");
+        store.insert(key3, val3).expect("failed to insert key3");
+
+        let retrieved_key_1 = store.get(key1).expect("failed to retrieve key 1");
+        let retrieved_val_1 = retrieved_key_1.expect("None returned for key1");
+        assert_eq!(val1, retrieved_val_1.as_slice());
+
+        store.insert(key4, val4).expect("failed to insert key4");
+
+        let retrieved_key_4 = store.get(key4).expect("failed to retrieve key 4");
+        let retrieved_val_4 = retrieved_key_4.expect("None returned for key1");
+        let unique_positions = {
+            let mut tmp = HashSet::new();
+            for position in store.index.values() {
+                tmp.insert(position);
+            }
+            tmp.len()
+        };
+        assert_eq!(store.index.values().count(), unique_positions);
+        assert_eq!(val4, retrieved_val_4.as_slice());
+    }
 }
