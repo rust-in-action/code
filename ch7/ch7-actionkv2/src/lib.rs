@@ -248,7 +248,7 @@ mod tests {
 
         store.insert(key4, val4).expect("failed to insert key4");
 
-        let retrieved_key_4 = store.get(key4).expect("failed to retrieve key 3");
+        let retrieved_key_4 = store.get(key4).expect("failed to retrieve key 4");
         let retrieved_val_4 = retrieved_key_4.expect("None returned for key1");
         println!("index: {:?}", store.index);
         assert_eq!(val4, retrieved_val_4.as_slice());
