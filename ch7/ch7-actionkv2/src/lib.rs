@@ -232,6 +232,16 @@ mod tests {
         store.insert(key2, val2).expect("failed to insert key2");
         store.insert(key3, val3).expect("failed to insert key3");
 
+        // My understanding of how everything works is that retreiving `key1` *should* leave the file
+        // pointing at the start of `key2`.
+        //
+        // Thus when we insert `4`, even though it gets *written* to the end of the file, the
+        // index will be pointing to the incorrect location.
+        //
+        // You can verify this by inspecting the `index` values that get printed or retrieving the incorrect value for `key4`
+        //
+        // However, that only happens **WITH** the .seek(Current(0))` in `get_at`
+
         let retrieved_key_1 = store.get(key1).expect("failed to retrieve key 1");
         let retrieved_val_1 = retrieved_key_1.expect("None returned for key1");
         assert_eq!(val1, retrieved_val_1.as_slice());
