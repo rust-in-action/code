@@ -112,6 +112,14 @@ impl ActionKV {
         f.seek(SeekFrom::Start(position))?;
         let kv = ActionKV::process_record(&mut f)?;
 
+        // Even though `f.seek` does take `&mut self`, my understanding is calling it
+        // with `SeekFrom::Current(0)` simply says "where am I at in the stream" without
+        // altering anything. In fact there's even a convenience function that claims
+        // exactly this: https://doc.rust-lang.org/std/io/trait.Seek.html#method.stream_position
+        //
+        // However, commenting these two lines makes `test_index_maintenance` pass
+        let final_pos = f.seek(SeekFrom::Current(0))?;
+        println!("after reading at {}, final_pos is {}", position, final_pos);
         Ok(kv)
     }
 
@@ -179,6 +187,7 @@ impl ActionKV {
         f.write_u32::<LittleEndian>(val_len as u32)?;
         f.write_all(&mut tmp)?;
 
+        println!("current_position: {}, {:?}, {:?}", current_position, key, value);
         Ok(current_position)
     }
 
@@ -192,4 +201,46 @@ impl ActionKV {
         self.insert(key, b"")
     }
 
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::ActionKV;
+    use tempdir::TempDir;
+
+    #[test]
+    fn test_index_maintenance() {
+        let key1 = "a".as_bytes();
+        let val1 = "1".as_bytes();
+
+        let key2 = "b".as_bytes();
+        let val2 = "2".as_bytes();
+
+        let key3 = "c".as_bytes();
+        let val3 = "3".as_bytes();
+
+        let key4 = "d".as_bytes();
+        let val4 = "4".as_bytes();
+
+        let dir = TempDir::new("testing").expect("failed to create temp dir");
+        let path = dir.path().join("foo.txt");
+
+        let mut store = ActionKV::open(path.as_path()).expect("failed to create store");
+
+        store.insert(key1, val1).expect("failed to insert key1");
+        store.insert(key2, val2).expect("failed to insert key2");
+        store.insert(key3, val3).expect("failed to insert key3");
+
+        let retrieved_key_1 = store.get(key1).expect("failed to retrieve key 1");
+        let retrieved_val_1 = retrieved_key_1.expect("None returned for key1");
+        assert_eq!(val1, retrieved_val_1.as_slice());
+
+        store.insert(key4, val4).expect("failed to insert key4");
+
+        let retrieved_key_4 = store.get(key4).expect("failed to retrieve key 3");
+        let retrieved_val_4 = retrieved_key_4.expect("None returned for key1");
+        println!("index: {:?}", store.index);
+        assert_eq!(val4, retrieved_val_4.as_slice());
+    }
 }
