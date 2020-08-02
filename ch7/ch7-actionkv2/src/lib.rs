@@ -112,14 +112,6 @@ impl ActionKV {
         f.seek(SeekFrom::Start(position))?;
         let kv = ActionKV::process_record(&mut f)?;
 
-        // Even though `f.seek` does take `&mut self`, my understanding is calling it
-        // with `SeekFrom::Current(0)` simply says "where am I at in the stream" without
-        // altering anything. In fact there's even a convenience function that claims
-        // exactly this: https://doc.rust-lang.org/std/io/trait.Seek.html#method.stream_position
-        //
-        // However, commenting these two lines makes `test_index_maintenance` pass
-        let final_pos = f.seek(SeekFrom::Current(0))?;
-        println!("after reading at {}, final_pos is {}", position, final_pos);
         Ok(kv)
     }
 
@@ -179,15 +171,12 @@ impl ActionKV {
 
         let checksum = crc32::checksum_ieee(&tmp);
 
-        let next_byte = SeekFrom::End(0);
-        let current_position = f.seek(SeekFrom::Current(0))?;
-        f.seek(next_byte)?;
+        let current_position = f.seek(SeekFrom::End(0))?;
         f.write_u32::<LittleEndian>(checksum)?;
         f.write_u32::<LittleEndian>(key_len as u32)?;
         f.write_u32::<LittleEndian>(val_len as u32)?;
         f.write_all(&mut tmp)?;
 
-        println!("current_position: {}, {:?}, {:?}", current_position, key, value);
         Ok(current_position)
     }
 
@@ -232,16 +221,6 @@ mod tests {
         store.insert(key1, val1).expect("failed to insert key1");
         store.insert(key2, val2).expect("failed to insert key2");
         store.insert(key3, val3).expect("failed to insert key3");
-
-        // My understanding of how everything works is that retreiving `key1` *should* leave the file
-        // pointing at the start of `key2`.
-        //
-        // Thus when we insert `4`, even though it gets *written* to the end of the file, the
-        // index will be pointing to the incorrect location.
-        //
-        // You can verify this by inspecting the `index` values that get printed or retrieving the incorrect value for `key4`
-        //
-        // However, that only happens **WITH** the .seek(Current(0))` in `get_at`
 
         let retrieved_key_1 = store.get(key1).expect("failed to retrieve key 1");
         let retrieved_val_1 = retrieved_key_1.expect("None returned for key1");
