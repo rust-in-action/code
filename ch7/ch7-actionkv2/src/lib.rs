@@ -208,6 +208,7 @@ impl ActionKV {
 mod tests {
     use super::ActionKV;
     use tempdir::TempDir;
+    use std::collections::HashSet;
 
     #[test]
     fn test_index_maintenance() {
@@ -250,7 +251,14 @@ mod tests {
 
         let retrieved_key_4 = store.get(key4).expect("failed to retrieve key 4");
         let retrieved_val_4 = retrieved_key_4.expect("None returned for key1");
-        println!("index: {:?}", store.index);
+        let unique_positions = {
+            let mut tmp = HashSet::new();
+            for position in store.index.values() {
+                tmp.insert(position);
+            }
+            tmp.len()
+        };
+        assert_eq!(store.index.values().count(), unique_positions);
         assert_eq!(val4, retrieved_val_4.as_slice());
     }
 }
