@@ -14,7 +14,7 @@ fn main() { // <1> Executable projects require a main() function
           continue;
       }
 
-      let fields: Vec<_> = record // <4> A "Vec" type is shorthand for vector. Vectors are arrays that will dynamically expand when needed. The underscore asks the the compiler to infer the type of the vector's elements.
+      let fields: Vec<_> = record // <4> A "Vec" type is shorthand for vector. Vectors are arrays that will dynamically expand when needed. The underscore asks the compiler to infer the type of the vector's elements.
           .split(',')  // <3> Split `record` into substrings 
           .map(|field| field.trim()) // <4> As well as for loops, Rust programmers can use higher-order programmers when they prefer. This line trims the whitespace from every field.
           .collect();       // <5> Rust will "collect" the results of an iterator into a vector.
