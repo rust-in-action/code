@@ -39,7 +39,7 @@ impl CPU {
         let sp = self.stack_pointer;
         let stack = &mut self.stack;
 
-        if sp > stack.len() {
+        if sp >= stack.len() {
             panic!("Stack overflow!")
         }
 
@@ -85,4 +85,42 @@ fn main() {
     assert_eq!(cpu.registers[0], 45);
 
     println!("5 + (10 * 2) + (10 * 2) = {}", cpu.registers[0]);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    impl CPU {
+        fn new_test_subject() -> Self {
+            Self {
+                registers: [0; 16],
+                memory: [0; 4096],
+                position_in_memory: 0,
+                stack: [0; 16],
+                stack_pointer: 0,
+            }
+        }
+    }
+
+    #[test]
+    fn test_max_stack() {
+        let mut cpu = CPU::new_test_subject();
+
+        // Fill the stack
+        for i in 0..cpu.stack.len() {
+            cpu.call(0);
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "Stack overflow!")]
+    fn test_stack_overflow_by_one() {
+        let mut cpu = CPU::new_test_subject();
+
+        // Fill the stack then go one further
+        for i in 0..=cpu.stack.len() {
+            cpu.call(0);
+        }
+    }
 }
