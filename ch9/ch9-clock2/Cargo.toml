@@ -1,12 +1,12 @@
 [package]
 name = "clock"
 version = "0.1.2"
-authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2018"
 
 [dependencies]
-byteorder = "1"
 chrono = "0.4"
-clap = "2.32"
+clap = "2"
 
 [target.'cfg(windows)'.dependencies]
 winapi = "0.2"
@@ -14,6 +14,3 @@ kernel32-sys = "0.2"
 
 [target.'cfg(not(windows))'.dependencies]
 libc = "0.2"
-
-[profile.release]
-lto = true

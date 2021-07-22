@@ -1,27 +1,11 @@
-#[derive(Debug)]
+#[derive(Debug,Clone,Copy)]   // <1>
 struct CubeSat {
   id: u64,
 }
 
-#[derive(Debug)]
+#[derive(Debug,Clone,Copy)]   // <1>
 enum StatusMessage {
   Ok,
-}
-
-impl Copy for CubeSat { }
-
-impl Copy for StatusMessage { }
-
-impl Clone for CubeSat { // <1>
-  fn clone(&self) -> Self {
-    CubeSat { id: self.id } //<2>
-  }
-}
-
-impl Clone for StatusMessage {
-  fn clone(&self) -> Self {
-    *self // <3>
-  }
 }
 
 fn check_status(sat_id: CubeSat) -> StatusMessage {
@@ -30,17 +14,10 @@ fn check_status(sat_id: CubeSat) -> StatusMessage {
 
 fn main () {
   let sat_a = CubeSat { id: 0 };
-  let sat_b = CubeSat { id: 1 };
-  let sat_c = CubeSat { id: 2 };
 
-  let a_status = check_status(sat_a);
-  let b_status = check_status(sat_b);
-  let c_status = check_status(sat_c);
-  println!("a: {:?}, b: {:?}, c: {:?}", a_status, b_status, c_status);
+  let a_status = check_status(sat_a.clone());   // <2>
+  println!("a: {:?}", a_status.clone());        // <2>
 
-  // "waiting" ...
-  let a_status = check_status(sat_a);
-  let b_status = check_status(sat_b);
-  let c_status = check_status(sat_c);
-  println!("a: {:?}, b: {:?}, c: {:?}", a_status, b_status, c_status);
+  let a_status = check_status(sat_a);           // <3>
+  println!("a: {:?}", a_status);                // <3>
 }

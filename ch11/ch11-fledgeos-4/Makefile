@@ -1,5 +1,5 @@
 all:
-	bootimage run --target=fledge.json
+	cargo run
 
 tree:
 	tree -A -I target

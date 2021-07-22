@@ -1,8 +1,0 @@
-[package]
-name = "ch12-sig"
-version = "0.1.0"
-authors = ["Tim McNamara <tim.mcnamara@canonical.com>"]
-edition = "2018"
-
-[dependencies]
-#libc = "0.2"

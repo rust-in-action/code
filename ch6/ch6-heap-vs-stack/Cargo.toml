@@ -1,7 +1,0 @@
-[package]
-name = "ch6-heap-via-box"
-version = "0.1.0"
-authors = ["Tim McNamara <paperless@timmcnamara.co.nz>"]
-
-[dependencies]
-rand = "0.3"

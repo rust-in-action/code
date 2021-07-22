@@ -1,8 +1,0 @@
-[package]
-name = "ch9-sao-paulo"
-version = "0.1.0"
-authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
-
-[dependencies]
-chrono = "0.4"
-chrono-tz = "0.4"

@@ -1,25 +1,18 @@
 [package]
 name = "mget"
 version = "0.1.0"
-authors = ["Tim McNamara <paperless@timmcnamara.co.nz>"]
+authors = ["Tim McNamara <author@rustinaction.com>"]
 edition = "2018"
 
 [dependencies]
-clap = "2.33"
+clap = "2"
 rand = "0.7"
-url = "2.0.0"
-log = "0.4"
-env_logger = "0.6"
-
-[dependencies.trust-dns]
-version = "0.16"
-default_features = false
-
-[dependencies.smoltcp]
-version = "0.5"
-default_features = true
-features = ["proto-igmp", "proto-ipv4", "verbose", "log"]
-
-[profile.release]
-codegen_units = 1
-lto = true
+smoltcp = {
+  version = "0.6",
+  features = ["proto-igmp", "proto-ipv4", "verbose", "log"]
+}
+trust-dns = {
+  version = "0.16",
+  default-features = false
+}
+url = "2"

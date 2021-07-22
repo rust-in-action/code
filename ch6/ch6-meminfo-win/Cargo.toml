@@ -1,9 +1,9 @@
 [package]
 name = "meminfo"
 version = "0.1.0"
-authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2018"
 
 [dependencies]
-#libc = "0.2"
-winapi = "0.2"
-kernel32-sys = "0.2"
+winapi = "0.2" #                  <1>
+kernel32-sys = "0.2" #            <2>

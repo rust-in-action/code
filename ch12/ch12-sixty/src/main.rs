@@ -1,6 +1,6 @@
 use std::time;
 use std::process;
-use std::thread::sleep;
+use std::thread::{sleep};
 
 fn main() {
     let delay = time::Duration::from_secs(1);

@@ -1,16 +1,20 @@
-use std::ops::{Add};
+use std::ops::{Add};                             // <1>
+use std::time::{Duration};                       // <2>
 
-fn add<T: Add<Output = T>>(i: T, j: T) -> T {
+fn add<T: Add<Output = T>>(i: T, j: T) -> T {    // <3>
   i + j
 }
 
 fn main() {
-  let (a, b) = (1.2, 3.4);
-  let (x, y) = (10, 20);
+  let floats = add(1.2, 3.4);      // <4>
+  let ints = add(10, 20);          // <5>
+  let durations = add(             // <6>
+    Duration::new(5, 0),           // <6>
+    Duration::new(10, 0)           // <6>
+  );
 
-  let c = add(a,b);
-  let z = add(x,y);
+  println!("{}", floats);
+  println!("{}", ints);
+  println!("{:?}", durations);    // <7>
 
-  println!("{} + {} = {}", a, b, c);
-  println!("{} + {} = {}", x, y, z);
 }

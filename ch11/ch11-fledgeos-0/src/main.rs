@@ -1,23 +1,25 @@
-#![feature(core_intrinsics)]
-#![no_std]
-#![no_main]
+#![no_std]                       // <1>
+#![no_main]                      // <1>
+#![feature(core_intrinsics)]     // <2>
 
-use core::intrinsics;
-use core::panic::PanicInfo;
+use core::intrinsics;            // <2>
+use core::panic::PanicInfo;      // <3>
 
 #[panic_handler]
 #[no_mangle]
 pub fn panic(_info: &PanicInfo) -> ! {
-  unsafe {
-    intrinsics::abort();
-  }
+  intrinsics::abort();           // <4>
 }
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-  let mut framebuffer = 0xb8000 as *mut u8;
+  let framebuffer = 0xb8000 as *mut u8;
+
   unsafe {
-      framebuffer.offset( 1).write_volatile(0x30);
+    framebuffer
+      .offset(1)                 // <5>
+      .write_volatile(0x30);     // <6>
   }
+
   loop {}
 }

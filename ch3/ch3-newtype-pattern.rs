@@ -1,10 +1,12 @@
-#[derive(PartialEq)] // <1>
-struct Hostname(String); // <2>
+struct Hostname(String);                 // <1>
+
+fn connect(host: Hostname) {             // <2>
+  println!("connected to {}", host.0);   // <3>
+}
 
 fn main() {
-    let ordinary_string = String::from("localhost"); 
+    let ordinary_string = String::from("localhost");
     let host = Hostname ( ordinary_string.clone() );
-    if host == ordinary_string { // <3>
-      println!("huh?");
-    };
+
+    connect(ordinary_string);
 }

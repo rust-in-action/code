@@ -1,7 +1,7 @@
 [package]
 name = "ch12-toy-global"
 version = "0.1.0"
-authors = ["Tim McNamara <tim.mcnamara@canonical.com>"]
+authors = ["Tim McNamara <author@rustinaction.com>"]
 edition = "2018"
 
 [dependencies]

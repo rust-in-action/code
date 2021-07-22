@@ -1,6 +1,6 @@
-#![feature(core_intrinsics)]
 #![no_std]
 #![no_main]
+#![feature(core_intrinsics)]
 
 use core::intrinsics;
 use core::panic::PanicInfo;
@@ -18,7 +18,9 @@ pub fn panic(_info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
   let mut framebuffer = 0xb8000 as *mut u8;
   unsafe {
-      framebuffer.offset( 1).write_volatile(0x30);
+   framebuffer
+    .offset(1)
+    .write_volatile(0x30);
   }
   loop {
     hlt();

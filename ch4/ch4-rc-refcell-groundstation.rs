@@ -3,7 +3,7 @@ use std::cell::RefCell;
 
 #[derive(Debug)]
 struct GroundStation {
-  radio_freq: f64 // Mhz
+  radio_freq: f64  // Mhz
 }
 
 fn main() {
@@ -15,7 +15,7 @@ fn main() {
 
   println!("base: {:?}", base);
 
-  { // introduce a new scope
+  {                                            // <1>
     let mut base_2 = base.borrow_mut();
     base_2.radio_freq -= 12.34;
     println!("base_2: {:?}", base_2);

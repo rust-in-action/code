@@ -1,0 +1,10 @@
+[package]
+name = "basic-handler"
+version = "0.1.0"
+authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2018"
+
+[dependencies]
+
+[target.'cfg(not(windows))'.dependencies]
+libc = "0.2"

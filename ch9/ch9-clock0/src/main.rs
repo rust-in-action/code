@@ -1,6 +1,4 @@
-extern crate chrono;
-
-use chrono::{Local}; // timezone type
+use chrono::Local;
 
 fn main() {    
     let now = Local::now();

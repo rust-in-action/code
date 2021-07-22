@@ -1,7 +1,0 @@
-[package]
-name = "write123"
-version = "0.1.0"
-authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
-
-[dependencies]
-byteorder = "1.2"

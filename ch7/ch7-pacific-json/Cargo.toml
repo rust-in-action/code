@@ -1,7 +1,7 @@
 [package]
 name = "ch7-pacific-json"
 version = "0.1.0"
-authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+authors = ["Tim McNamara <author@rustinaction.com>"]
 
 [dependencies]
 serde_json = "1.0"

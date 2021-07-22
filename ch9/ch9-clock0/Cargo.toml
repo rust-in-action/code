@@ -1,10 +1,8 @@
 [package]
 name = "clock"
 version = "0.1.0"
-authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2018"
 
 [dependencies]
 chrono = "0.4"
-
-[profile.release]
-lto = true

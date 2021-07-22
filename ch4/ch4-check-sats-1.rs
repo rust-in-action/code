@@ -10,9 +10,9 @@ fn check_status(sat_id: u64) -> StatusMessage {
 }
 
 fn main () {
-  let sat_a = 0;
-  let sat_b = 1;
-  let sat_c = 2;
+  let sat_a = 0;      // <1>
+  let sat_b = 1;      // <1>
+  let sat_c = 2;      // <1>
 
   let a_status = check_status(sat_a);
   let b_status = check_status(sat_b);

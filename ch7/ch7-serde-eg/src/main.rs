@@ -1,12 +1,9 @@
-#[macro_use]
-extern crate serde_derive;
+use bincode::serialize as to_bincode;       // <1>
+use serde_cbor::to_vec as to_cbor;          // <1>
+use serde_json::to_string as to_json;       // <1>
+use serde_derive::{Serialize};
 
-extern crate serde;
-extern crate serde_cbor;
-extern crate serde_json;
-extern crate bincode;
-
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize)]           // <2>
 struct City {
     name: String,
     population: usize,
@@ -22,13 +19,20 @@ fn main() {
         longitude: 8.33,
     };
 
-    let as_json = serde_json::to_string(&calabar).unwrap();
-    let as_cbor = serde_cbor::to_vec(&calabar).unwrap();
-    let as_bincode = bincode::serialize(&calabar).unwrap();
+    let as_json    =    to_json(&calabar).unwrap(); // <3>
+    let as_cbor    =    to_cbor(&calabar).unwrap(); // <3>
+    let as_bincode = to_bincode(&calabar).unwrap(); // <3>
 
-    println!("json: {}", &as_json);
-    println!("cbor: {:?}", &as_cbor);
-    println!("cbor (as UTF-8): {:?}", String::from_utf8_lossy(&as_cbor));
-    println!("bincode: {:?}", &as_bincode);
-    println!("bincode (as UTF-8): {:?}", String::from_utf8_lossy(&as_bincode));
+    println!("json:\n{}\n", &as_json);
+    println!("cbor:\n{:?}\n", &as_cbor);
+    println!("bincode:\n{:?}\n", &as_bincode);
+    println!("json (as UTF-8):\n{}\n",
+       String::from_utf8_lossy(as_json.as_bytes())
+    );
+    println!("cbor (as UTF-8):\n{:?}\n",
+        String::from_utf8_lossy(&as_cbor)
+    );
+    println!("bincode (as UTF-8):\n{:?}\n",
+        String::from_utf8_lossy(&as_bincode)
+    );
 }

@@ -1,7 +1,0 @@
-[package]
-name = "genfib"
-version = "0.1.0"
-authors = ["Tim"]
-
-[dependencies]
-num = "0.1"

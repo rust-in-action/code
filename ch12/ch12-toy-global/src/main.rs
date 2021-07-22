@@ -3,15 +3,15 @@ use rand;
 static mut SHUT_DOWN: bool = false;
 
 fn main() {
-    loop {
-        unsafe {
-            SHUT_DOWN = rand::random();
-        }
-        print!(".");
-
-        if unsafe { SHUT_DOWN } {
-            break;
-        };
+  loop {
+    unsafe {                            // <1>
+      SHUT_DOWN = rand::random();       // <2>
     }
-    println!()
+    print!(".");
+
+    if unsafe { SHUT_DOWN } {
+      break
+    };
+  }
+  println!()
 }

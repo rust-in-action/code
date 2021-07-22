@@ -1,6 +1,7 @@
 fn main() {
   let mut i: u16 = 0;
-  print!("{:}..", i);
+  print!("{}..", i);
+
   loop {
       i += 1000;
       print!("{}..", i);

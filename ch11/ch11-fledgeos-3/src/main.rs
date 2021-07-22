@@ -6,6 +6,8 @@
 use core::intrinsics;
 use core::panic::PanicInfo;
 
+use x86_64::instructions::{hlt};
+
 #[allow(unused)]
 #[derive(Clone,Copy)]
 #[repr(u8)]
@@ -19,8 +21,6 @@ enum Color {
   Brown = 0x6,    Yellow = 0xE,
   Gray = 0x7,     DarkGray = 0x8
 }
-
-use x86_64::instructions::{hlt};
 
 struct Cursor {
   position: isize,

@@ -1,23 +1,24 @@
-#![allow(unused_variables)] // <1> Relax compiler warnings while working through ideas
+#![allow(unused_variables)]              // <1>
 
-type File = String; // <2> Create a type alias. The compiler won't distinguish between String & File, but your source code will.
+type File = String;                      // <2>
 
 fn open(f: &mut File) -> bool {
-    true // <3> let's assume for the moment that this always succeeds
+    true   // <3>
 }
 
 fn close(f: &mut File) -> bool {
-    true // <3>
+    true                                 // <3>
 }
 
-#[allow(dead_code)] // <4> Relaxes a compiler warning about an unused function
-fn read(f: &mut File, save_to: &mut Vec<u8>) -> ! { // <5> Using `!` as a return type indicates to the Rust compiler that this function never returns
-    unimplemented!() // <6> A macro that crashes the program if it is encountered
+#[allow(dead_code)]                      // <4>
+fn read(f: &mut File,
+        save_to: &mut Vec<u8>) -> ! {    // <5>
+    unimplemented!()                     // <6>
 }
 
 fn main() {
-    let mut f1 = File::from("f1.txt"); // <7> With the type declaration at line 3, `File` "inherits" all of String's methods 
+    let mut f1 = File::from("f1.txt");  // <7>
     open(&mut f1);
-    //read(f1 , vec![]); // <8> There's little point in calling this method
+    //read(f1, vec![]);                 // <8>
     close(&mut f1);
 }

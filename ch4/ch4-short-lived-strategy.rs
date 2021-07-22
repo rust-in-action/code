@@ -38,7 +38,7 @@ impl Mailbox {
 impl GroundStation {
     fn connect(&self, sat_id: u64) -> CubeSat {
         CubeSat {
-            id: sat_id, 
+            id: sat_id,
         }
     }
 
@@ -75,7 +75,7 @@ fn main() {
 
   for sat_id in sat_ids {
     let sat = base.connect(sat_id);
-    
+
     let msg = sat.recv(&mut mail);
     println!("{:?}: {:?}", sat, msg);
   }

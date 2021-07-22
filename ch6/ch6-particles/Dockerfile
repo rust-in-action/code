@@ -1,7 +1,7 @@
-FROM rust:1.23.0
+FROM rust:1.30
 
 WORKDIR /opt/particles
 COPY . .
-
-RUN cargo install
+RUN [[ -f Cargo.lock ]] && rm Cargo.lock || true
+RUN cargo build
 CMD ["particles"]

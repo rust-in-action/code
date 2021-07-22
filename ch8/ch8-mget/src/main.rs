@@ -1,47 +1,60 @@
-extern crate log;
-extern crate clap;
-extern crate env_logger;
-extern crate rand;
-extern crate smoltcp;
-extern crate url;
-
 use clap::{App, Arg};
-use url::Url;
 use smoltcp::phy::TapInterface;
+use url::Url;
 
 mod dns;
-mod http;
 mod ethernet;
+mod http;
 
 fn main() {
   let app = App::new("mget")
-      .about("GET a webpage, manually")
-      .arg(Arg::with_name("url").required(true))
-      .arg(Arg::with_name("tap-device").required(true))
-      .arg(Arg::with_name("dns-server").short("s").default_value("1.1.1.1"))
-      .get_matches();
+    .about("GET a webpage, manually")
+    .arg(Arg::with_name("url").required(true))       // <1>
+    .arg(Arg::with_name("tap-device").required(true))// <2>
+    .arg(
+      Arg::with_name("dns-server")
+        .default_value("1.1.1.1"),   // <3>
+    )
+    .get_matches();                  // <4>
 
-  // read raw values from command-line
   let url_text = app.value_of("url").unwrap();
-  let dns_server_text = app.value_of("dns-server").unwrap();
+  let dns_server_text =
+    app.value_of("dns-server").unwrap();
   let tap_text = app.value_of("tap-device").unwrap();
 
-  let url = Url::parse(url_text).expect("unable to parse <url> as a URL");
-  if url.scheme() != "http" {
-    eprintln!("only HTTP protocol supported");
+  let url = Url::parse(url_text)                    // <5>
+    .expect("error: unable to parse <url> as a URL");
+
+  if url.scheme() != "http" {                       // <5>
+    eprintln!("error: only HTTP protocol supported");
     return;
   }
-  let domain_name = url.host_str().expect("domain name required");
 
-  let _dns_server: std::net::Ipv4Addr = dns_server_text
-      .parse()
-      .expect("unable to parse <dns-server> as an IPv4 address");
+  let tap = TapInterface::new(&tap_text)            // <5>
+    .expect(
+      "error: unable to use <tap-device> as a \
+       network interface",
+    );
 
-  let tap = TapInterface::new(&tap_text).expect("unable to use <tap-device> as a network interface");
+  let domain_name =
+    url.host_str()                                  // <5>
+      .expect("domain name required");
 
-  let addr = dns::resolve(dns_server_text, domain_name).unwrap().unwrap();
+  let _dns_server: std::net::Ipv4Addr =
+    dns_server_text
+      .parse()                                      // <5>
+      .expect(
+        "error: unable to parse <dns-server> as an \
+         IPv4 address",
+      );
 
-  let mac = ethernet::MacAddress::new().into();
+  let addr =
+    dns::resolve(dns_server_text, domain_name)      // <6>
+      .unwrap()
+      .unwrap();
 
-  http::get(tap, mac, addr, url).unwrap();
+  let mac = ethernet::MacAddress::new().into();     // <7>
+
+  http::get(tap, mac, addr, url).unwrap();          // <8>
+
 }

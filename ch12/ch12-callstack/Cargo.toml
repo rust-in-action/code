@@ -1,0 +1,6 @@
+[package]
+name = "ch10-callstack"
+version = "0.1.0"
+authors = ["Tim McNamara <author@rustinaction.com>"]
+
+[dependencies]

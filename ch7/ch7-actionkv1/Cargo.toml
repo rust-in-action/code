@@ -1,7 +1,8 @@
 [package]
 name = "actionkv"
-version = "0.1.0"
-authors = ["Tim McNamara <code@timmcnamara.co.nz>"]
+version = "1.0.0"
+authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2018"
 
 [dependencies]
 crc = "1.7"

@@ -1,10 +1,10 @@
-use std::rc::Rc;
+use std::rc::Rc;                          // <1>
 
 #[derive(Debug)]
 struct GroundStation {}
 
 fn main() {
-  let base: Rc<GroundStation> = Rc::new(GroundStation {});
-  
-  println!("{:?}", base);
+  let base = Rc::new(GroundStation {});   // <2>
+
+  println!("{:?}", base);                 // <3>
 }

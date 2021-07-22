@@ -1,9 +1,8 @@
 [package]
 name = "render-hex"
 version = "0.1.0"
-authors = ["Tim McNamara <paperless@timmcnamara.co.nz>"]
+authors = ["Tim McNamara <author@rustinaction.com>"]
 edition = "2018"
 
 [dependencies]
-turtle = "^1.0.0-rc.2"
-svg = "0.6.0"
+svg = "0.6"
