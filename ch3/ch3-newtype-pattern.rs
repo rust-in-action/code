@@ -8,5 +8,5 @@ fn main() {
     let ordinary_string = String::from("localhost");
     let host = Hostname ( ordinary_string.clone() );
 
-    connect(ordinary_string);
+    connect(host);
 }
