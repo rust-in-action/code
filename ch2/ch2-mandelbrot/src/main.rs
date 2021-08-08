@@ -25,7 +25,7 @@ fn calculate_mandelbrot(      // <2>
       row.push(escaped_at);
     }
 
-    all_rows.push(row);
+    rows.push(row);
   }
   rows
 }
