@@ -1,5 +1,5 @@
-fn main() {                 // <1>
-  let penguin_data = "\     // <2>
+fn main() {                 // <1> <2>
+  let penguin_data = "\
   common name,length (cm)
   Little penguin,33
   Yellow-eyed penguin,65
