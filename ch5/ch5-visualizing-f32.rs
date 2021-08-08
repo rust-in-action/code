@@ -34,6 +34,8 @@ fn decode(
 
   let exponent = (exponent as i32) - BIAS;     // <8>
   let exponent = RADIX.powf(exponent as f32);  // <8>
+  
+  let mut mantissa: f32 = 1.0;
 
   for i in 0..23 {                             // <9>
     let mask = 1 << i;                         // <9>
