@@ -37,7 +37,7 @@ impl File {
 }
 
 fn open(f: File) -> Result<File, String> {
-  if one_in(10_000) {                              <7>
+  if one_in(10_000) {                              // <7>
     let err_msg = String::from("Permission denied");
     return Err(err_msg);
   }
