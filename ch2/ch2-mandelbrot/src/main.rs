@@ -11,10 +11,10 @@ fn calculate_mandelbrot(      // <2>
   height: usize,              // <5>
   ) -> Vec<Vec<usize>> {
 
-  let mut rows: Vec<_> = Vec::with_capacity(width); // <6>
+  let mut rows: Vec<_> = Vec::with_capacity(height); // <6>
   for img_y in 0..height {                          // <7>
 
-    let mut row: Vec<usize> = Vec::with_capacity(height);
+    let mut row: Vec<usize> = Vec::with_capacity(width);
     for img_x in 0..width {
 
       let x_percent = (img_x as f64 / width as f64);
