@@ -62,7 +62,10 @@ fn main() {
       }
     }
 
-    "delete" => a.delete(key).unwrap(),
+    "delete" => {
+      a.delete(key).unwrap();
+      store_index_on_disk(&mut a, INDEX_KEY);       <2>
+    }
 
     "insert" => {
       let value = maybe_value.expect(&USAGE).as_ref();
