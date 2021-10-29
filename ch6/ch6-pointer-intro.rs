@@ -3,8 +3,8 @@ static C: [u8; 11] = [116, 104, 97, 110, 107, 115, 102, 105, 115, 104, 0];
 
 fn main() {
     let a = 42;
-    let b = &B;    <1>
-    let c = &C;    <1>
+    let b = &B;    // <1>
+    let c = &C;    // <1>
 
-    println!("a: {}, b: {:p}, c: {:p}", a, b, c);  <2>
+    println!("a: {}, b: {:p}, c: {:p}", a, b, c);  // <2>
 }
