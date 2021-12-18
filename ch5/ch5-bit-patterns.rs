@@ -8,5 +8,5 @@ fn main() {
   let sixtyfivethousand_535: u16 = 0b1111_1111_1111_1111;
 
   print!("{}, {}, {}, ..., ", zero, one, two);
-  println!("{}, {}, {}", sixty5_533, sixty5_534, sixty5_535);
+  println!("{}, {}, {}", sixtyfivethousand_533, sixtyfivethousand_534, sixtyfivethousand_535);
 }
