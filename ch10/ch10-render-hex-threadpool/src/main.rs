@@ -1,9 +1,10 @@
 use std::env;
+use std::thread;
 
-use rayon::prelude::*;
 use svg::node::element::path::{Command, Data, Position};
 use svg::node::element::{Path, Rectangle};
 use svg::Document;
+use crossbeam::unbounded;
 
 use crate::Operation::{
     Forward,
@@ -220,16 +221,14 @@ fn generate_svg(path_data: Vec<Command>) -> Document {
     .set("stroke-opacity", "0.9")
     .set("d", Data::from(path_data));
 
-  let document = Document::new()
+  Document::new()
     .set("viewBox", (0, 0, HEIGHT, WIDTH))
     .set("height", HEIGHT)
     .set("width", WIDTH)
     .set("style", "style=\"outline: 5px solid #800000;\"")
     .add(background)
     .add(sketch)
-    .add(border);
-
-  document
+    .add(border)
 }
 
 fn main() {
