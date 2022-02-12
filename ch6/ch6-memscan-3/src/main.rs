@@ -17,5 +17,5 @@ fn main() {
     println!("local_int: {:p}", &local_int as *const i32);
     println!("boxed_int: {:p}", Box::into_raw(boxed_int));
     println!("boxed_str: {:p}", Box::into_raw(boxed_str));
-    println!("fn_int:    {:p}", fn_int);}
+    println!("fn_int:    {:p}", fn_int)};
 }
