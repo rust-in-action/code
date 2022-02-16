@@ -1,7 +1,7 @@
-#[allow(arithmetic_overflow)]    <1>
+#[allow(arithmetic_overflow)]
 
 fn main() {
   let (a, b) = (200, 200);
-  let c: u8 = a + b;             <2>
+  let c: u8 = a + b;            
   println!("200 + 200 = {}", c);
 }
