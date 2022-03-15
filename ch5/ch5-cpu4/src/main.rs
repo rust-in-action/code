@@ -141,7 +141,6 @@ fn main() {
     cpu.registers[0] = 5;
     cpu.registers[1] = 10;
 
-    // 
     cpu.memory[0x000] = 0x21; cpu.memory[0x001] = 0x00; 
     cpu.memory[0x002] = 0x21; cpu.memory[0x003] = 0x00;
 
