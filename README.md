@@ -1,5 +1,5 @@
 
-![](https://images.manning.com/180/240/resize/book/5/17c1124-214f-4307-b4fe-fd961a9a31f4/McNamara-Rust-MEAP-HI.png)
+![](https://images.manning.com/264/352/resize/book/4/d33e139-a73e-4206-b457-6fa024449e33/McNamara-Rust-HI.png)
 
 # Welcome to _Rust in Action_ source code
 
