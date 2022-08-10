@@ -102,9 +102,10 @@ impl CPU {
 
     // (7xkk)
     fn add_xy(&mut self, x: u8, y: u8) {
-        self.registers[x as usize] += self.registers[y as usize];
-
-        // TODO: SET CARRY FLAG!!!!
+        /// Set carry flag
+        let (wrapped, is_overflow) = self.registers[x as usize].overflowing_add(self.registers[y as usize]);
+        self.registers[0xF] = if is_overflow {1} else {0};
+        self.registers[x as usize] = wrapped;
     }
 
     fn and_xy(&mut self, x: u8, y: u8) {
