@@ -59,14 +59,14 @@ impl CPU {
     }
 
     fn se(&mut self, vx: u8, kk: u8) {
-        if vx == kk {
+        if self.registers[vx as usize] == kk {
             self.position_in_memory += 2;
         }
     }
 
     /// () SNE  **S**tore if **n**ot **e**qual 
     fn sne(&mut self, vx: u8, kk: u8) {
-        if vx != kk {
+        if self.registers[vx as usize] != kk {
             self.position_in_memory += 2;
         }
     }
