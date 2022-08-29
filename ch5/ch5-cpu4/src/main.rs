@@ -53,18 +53,19 @@ impl CPU {
         self.registers[vx as usize] = kk; 
     }
 
-    /// (7xkk) Add sets the value `kk` into register `vx`
+    /// (7xkk) Add adds the value `kk` into register `vx`
     fn add(&mut self, vx: u8, kk: u8) {
         self.registers[vx as usize] += kk; 
     }
 
+    /// (3xkk / 5xy_) SE  **S**kip if **e**qual
     fn se(&mut self, vx: u8, kk: u8) {
         if vx == kk {
             self.position_in_memory += 2;
         }
     }
 
-    /// () SNE  **S**tore if **n**ot **e**qual 
+    /// (4xkk) SNE  **S**kip if **n**ot **e**qual
     fn sne(&mut self, vx: u8, kk: u8) {
         if vx != kk {
             self.position_in_memory += 2;
