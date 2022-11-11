@@ -7,12 +7,6 @@ edition = "2018"
 [dependencies]
 clap = "2"
 rand = "0.7"
-smoltcp = {
-  version = "0.6",
-  features = ["proto-igmp", "proto-ipv4", "verbose", "log"]
-}
-trust-dns = {
-  version = "0.16",
-  default-features = false
-}
+smoltcp = {version = "0.6",features = ["proto-igmp", "proto-ipv4", "verbose", "log"]}
+trust-dns = {version = "0.16",default-features = false}
 url = "2"
