@@ -29,8 +29,8 @@ impl From<net::AddrParseError> for UpstreamError {
 }
 
 fn main() -> Result<(), UpstreamError> {
-    let _f = File::open("invisible.txt").map_err(UpstreamError::IO)?;
-    let _localhost = "::1".parse::<Ipv6Addr>().map_err(UpstreamError::Parsing)?;
+    let _f = File::open("invisible.txt")?;
+    let _localhost = "::1".parse::<Ipv6Addr>()?;
 
     Ok(())
 }
