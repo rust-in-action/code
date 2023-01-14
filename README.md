@@ -1,11 +1,9 @@
 
-![](https://images.manning.com/180/240/resize/book/5/17c1124-214f-4307-b4fe-fd961a9a31f4/McNamara-Rust-MEAP-HI.png)
+![](https://images.manning.com/264/352/resize/book/4/d33e139-a73e-4206-b457-6fa024449e33/McNamara-Rust-HI.png)
 
 # Welcome to _Rust in Action_ source code
 
-This source code repository is a companion to the [Rust in Action][] book available from Manning Publications.
-
-
+This source code repository is a companion to the [Rust in Action][] book by Tim McNamara, published by Manning Publications.
 
 # Supporting the book
 
@@ -23,6 +21,8 @@ If you haven't got it yet, here are some links so that you can buy _Rust in Acti
 # Providing feedback
 
 The issue tracker is open, and is useful for minor bug reports.
+
+Please don't submit pull requests. They are not accepted due to copyright.
 
 Please use https://livebook.manning.com/books/rust-in-action to submit issues for anything larger, especially if you want to discuss the book's text rather than a specific line of code.
 That way you can communicate with a community of thousands of other readers.
