@@ -14,3 +14,7 @@ sudo ip -6 route add fe80::/64 dev tap-rust
 sudo ip -6 route add fdaa::/64 dev tap-rust
 sudo ip6tables -t nat -A POSTROUTING -s fdaa::/64 -j MASQUERADE
 sudo sysctl -w net.ipv6.conf.all.forwarding=1
+
+# Some distros have a default policy of DROP. This allows the traffic.
+sudo iptables -A FORWARD -i tap-rust -s 192.168.42.0/24 -j ACCEPT
+sudo iptables -A FORWARD -o tap-rust -d 192.168.42.0/24 -j ACCEPT
