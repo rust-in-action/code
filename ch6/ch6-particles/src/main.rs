@@ -7,12 +7,33 @@ use rand::prelude::*;                            // <3>
 use std::alloc::{GlobalAlloc, System, Layout};   // <4>
 
 use std::time::Instant;                          // <5>
+                                                 //
+use std::cell::Cell;
 
 
 #[global_allocator]                              // <6>
 static ALLOCATOR: ReportingAllocator = ReportingAllocator;
 
 struct ReportingAllocator;                       // <7>
+                                                 //
+                                                 // 
+/// Execute a closure without logging on allocations.
+/// Source: https://github.com/andrewhickman/logging-allocator/blob/master/src/lib.rs#L42-L57
+pub fn run_guarded<F>(f: F)
+where
+    F: FnOnce(),
+{
+    thread_local! {
+        static GUARD: Cell<bool> = Cell::new(false);
+    }
+
+    GUARD.with(|guard| {
+        if !guard.replace(true) {
+            f();
+            guard.set(false)
+        }
+    })
+}
 
 unsafe impl GlobalAlloc for ReportingAllocator {
   unsafe fn alloc(&self, layout: Layout) -> *mut u8 {
@@ -22,7 +43,7 @@ unsafe impl GlobalAlloc for ReportingAllocator {
     let time_taken = end - start;
     let bytes_requested = layout.size();
 
-    eprintln!("{}\t{}", bytes_requested, time_taken.as_nanos());
+    run_guarded(|| {eprintln!("{}\t{}", bytes_requested, time_taken.as_nanos())});
     ptr
   }
 
