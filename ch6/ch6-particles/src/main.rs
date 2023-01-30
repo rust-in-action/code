@@ -18,6 +18,7 @@ struct ReportingAllocator;                       // <7>
                                                  //
                                                  // 
 /// Execute a closure without logging on allocations.
+/// Source: https://github.com/andrewhickman/logging-allocator/blob/master/src/lib.rs#L42-L57
 pub fn run_guarded<F>(f: F)
 where
     F: FnOnce(),
