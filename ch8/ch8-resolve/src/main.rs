@@ -3,10 +3,10 @@ use std::time::Duration;
 
 use clap::{App, Arg};
 use rand;
-use trust_dns::op::{Message, MessageType, OpCode, Query};
-use trust_dns::rr::domain::Name;
-use trust_dns::rr::record_type::RecordType;
-use trust_dns::serialize::binary::*;
+use trust_dns_client::op::{Message, MessageType, OpCode, Query};
+use trust_dns_client::rr::domain::Name;
+use trust_dns_client::rr::record_type::RecordType;
+use trust_dns_client::serialize::binary::*;
 
 fn main() {
   let app = App::new("resolve")
@@ -63,7 +63,12 @@ fn main() {
 
   for answer in dns_message.answers() {
     if answer.record_type() == RecordType::A {
-      let resource = answer.rdata();
+      // .rdata() is deprecated in modern trust_dns_client:
+      //
+      // warning: use of deprecated associated function `trust_dns_client::rr::Record::rdata`: use `Record::data` instead
+      //
+      // let resource = answer.rdata();
+      let resource = answer.data().unwrap();
       let ip = resource
         .to_ip_addr()
         .expect("invalid IP address received");

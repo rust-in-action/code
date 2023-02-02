@@ -7,4 +7,4 @@ edition = "2018"
 [dependencies]
 rand = "0.6"
 clap = "2.33"
-trust-dns = { version = "0.16", default-features = false }
+trust-dns-client = { version = "0.21.2", default-features = false }
