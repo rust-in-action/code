@@ -19,11 +19,19 @@ impl Display for MacAddress {
   }
 }
 
+// MAC address format summary:
+// https://en.wikipedia.org/wiki/MAC_address#Address_details
+//
+// 1st Octet:
+// -- bit 0 (LSB): 0 = unicast             / 1 = multicast
+// -- bit 1:       0 = globally unique OUI / 1 = locally assigned
+//
 impl MacAddress {
   fn new() -> MacAddress {
     let mut octets: [u8; 6] = [0; 6];
     rand::thread_rng().fill_bytes(&mut octets);
-    octets[0] |= 0b_0000_0011;                     // <3>
+    octets[0] |= 0b_0000_0010;                     // <3>
+    octets[0] &= 0b_1111_1110;                     // <3>
     MacAddress { 0: octets }
   }
 
@@ -32,7 +40,7 @@ impl MacAddress {
   }
 
   fn is_unicast(&self) -> bool {
-    (self.0[0] & 0b_0000_0001) == 0b_0000_0001
+    (self.0[0] & 0b_0000_0001) == 0b_0000_0000
   }
 }
 
