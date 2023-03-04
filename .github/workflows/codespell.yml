@@ -8,4 +8,4 @@ jobs:
       - uses: codespell-project/actions-codespell@v1
         with:
           check_hidden: true
-          ignore_words_list: crate
+          ignore_words_list: crate,ot
