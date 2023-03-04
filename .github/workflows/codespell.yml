@@ -1,0 +1,11 @@
+name: codespell
+on: [pull_request, push]
+jobs:
+  codespell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: codespell-project/actions-codespell@v1
+        with:
+          check_hidden: true
+          ignore_words_list: crate
