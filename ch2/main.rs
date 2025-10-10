@@ -10,7 +10,11 @@ mod ch2_introducing_vec;
 mod ch2_match_needles;
 mod ch2_needle_in_haystack;
 mod ch2_non_base2;
+mod ch2_read_file;
 mod ch2_simple_with_enumerate;
+mod ch2_simple_with_linenums;
+mod ch2_str_simple_pattern;
+mod ch2_while_true_incr_count;
 mod ch2_with_regex;
 mod ok;
 
@@ -54,9 +58,21 @@ fn main() {
     println!("-- ch2_non_base2 --");
     ch2_non_base2::main();
 
+    println!("-- ch2_read_file --");
+    ch2_read_file::main();
+
     println!("-- ch2_simple_with_enumerate --");
     ch2_simple_with_enumerate::main();
 
     println!("-- ch2_with_regex --");
     ch2_with_regex::main();
+
+    println!("-- ch2_simple_with_linenums --");
+    ch2_simple_with_linenums::main();
+
+    println!("-- ch2_while_true_incr_count --");
+    ch2_while_true_incr_count::main();
+
+    println!("-- ch2_str_simple_pattern --");
+    ch2_str_simple_pattern::main();
 }

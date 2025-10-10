@@ -8,7 +8,7 @@ dark square is a picture feverishly turned--in search of what?
 It is the same with books. What do we seek through millions of pages?";
 
     for line in quote.lines() {
-        if let Some(_) = re.find(line) {
+        if re.find(line).is_some() {
             println!("{}", line);
         }
     }
