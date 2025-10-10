@@ -1,5 +1,4 @@
 #[allow(dead_code)]
-
 #[derive(Debug)] // <1>
 enum Cereal {
     Barley,
@@ -11,7 +10,6 @@ enum Cereal {
 }
 
 fn main() {
-    let mut grains: Vec<Cereal> = vec![]; // <3>
-    grains.push(Cereal::Rye); // <4>
+    let grains: Vec<Cereal> = vec![Cereal::Rye]; // <3>
     drop(grains); // <5>
 }

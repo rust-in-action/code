@@ -12,4 +12,9 @@ members = [
 ]
 resolver = "3"
 
+[workspace.package]
+edition = '2024'
+
 [workspace.dependencies]
+float-cmp = "0.10.0"
+regex = "1.11.3"
