@@ -1,0 +1,15 @@
+[workspace]
+members = [
+  "ch1/ch1-cereals",
+  "ch1/ch1-fruit",
+  "ch1/ch1-hello2",
+  "ch1/ch1-letters",
+  "ch1/ch1-penguins",
+  "ch1/ch1-race",
+  "ch2",
+  "ch2/ch2-complex",
+  "ch2/ch2-mandelbrot",
+]
+resolver = "3"
+
+[workspace.dependencies]
