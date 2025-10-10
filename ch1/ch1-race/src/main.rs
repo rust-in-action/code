@@ -1,5 +1,6 @@
 use std::thread; // <1>
 
+#[allow(unused_assignments, unused_variables)]
 fn main() {
     let mut data = 100;
 

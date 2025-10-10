@@ -1,3 +1,4 @@
+#[allow(clippy::useless_vec)]
 fn main() {
     let fruit = vec!['🥝', '🍌', '🍇'];
 
