@@ -7,6 +7,11 @@ mod ch2_first_steps;
 mod ch2_generic_add;
 mod ch2_intro_to_numbers;
 mod ch2_introducing_vec;
+mod ch2_match_needles;
+mod ch2_needle_in_haystack;
+mod ch2_non_base2;
+mod ch2_simple_with_enumerate;
+mod ch2_with_regex;
 mod ok;
 
 fn main() {
@@ -39,4 +44,19 @@ fn main() {
 
     println!("-- ch2_introducing_vec --");
     ch2_introducing_vec::main();
+
+    println!("-- ch2_match_needles --");
+    ch2_match_needles::main();
+
+    println!("-- ch2_needle_in_haystack --");
+    ch2_needle_in_haystack::main();
+
+    println!("-- ch2_non_base2 --");
+    ch2_non_base2::main();
+
+    println!("-- ch2_simple_with_enumerate --");
+    ch2_simple_with_enumerate::main();
+
+    println!("-- ch2_with_regex --");
+    ch2_with_regex::main();
 }

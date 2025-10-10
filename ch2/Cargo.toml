@@ -10,3 +10,4 @@ path = "main.rs"
 
 [dependencies]
 float-cmp = { workspace = true }
+regex = { workspace = true }
