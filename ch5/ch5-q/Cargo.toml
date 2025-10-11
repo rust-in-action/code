@@ -3,5 +3,8 @@ name = "ch5-q"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
 
+[lib]
+path = "src/lib.rs"
+
 [dependencies]
-num = "*"
+num = { workspace = true }

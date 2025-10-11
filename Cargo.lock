@@ -75,6 +75,33 @@ name = "ch4-main"
 version = "0.1.0"
 
 [[package]]
+name = "ch5-cpu1"
+version = "0.1.0"
+
+[[package]]
+name = "ch5-cpu2"
+version = "0.1.0"
+
+[[package]]
+name = "ch5-cpu3"
+version = "0.1.0"
+
+[[package]]
+name = "ch5-cpu4"
+version = "0.1.0"
+
+[[package]]
+name = "ch5-main"
+version = "0.1.0"
+
+[[package]]
+name = "ch5-q"
+version = "0.1.0"
+dependencies = [
+ "num",
+]
+
+[[package]]
 name = "filebasics"
 version = "0.1.0"
 

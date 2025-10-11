@@ -1,5 +1,5 @@
 [package]
-name = "ch5-cpu3"
+name = "ch5-cpu4"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
 

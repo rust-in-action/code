@@ -1,8 +1,8 @@
-#[derive(Debug,Clone,Copy,PartialEq,Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Q7(i8);
 
 impl From<f64> for Q7 {
-    fn from (n: f64) -> Self {
+    fn from(n: f64) -> Self {
         if n >= 1.0 {
             Q7(127)
         } else if n <= -1.0 {
@@ -20,7 +20,7 @@ impl From<Q7> for f64 {
 }
 
 impl From<f32> for Q7 {
-    fn from (n: f32) -> Self {
+    fn from(n: f32) -> Self {
         Q7::from(n as f64)
     }
 }
@@ -32,8 +32,9 @@ impl From<Q7> for f32 {
 }
 
 #[cfg(test)]
-mod tests {          // <1>
-    use super::*;    // <2>
+mod tests {
+    // <1>
+    use super::*; // <2>
 
     #[test]
     fn out_of_bounds() {
