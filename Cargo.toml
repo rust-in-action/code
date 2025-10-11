@@ -9,6 +9,9 @@ members = [
   "ch2",
   "ch2/ch2-complex",
   "ch2/ch2-mandelbrot",
+  "ch3/filebasics",
+  "ch3/fileresult",
+  "ch3/globalerror",
 ]
 resolver = "3"
 
@@ -18,3 +21,4 @@ edition = '2024'
 [workspace.dependencies]
 float-cmp = "0.10.0"
 regex = "1.11.3"
+rand = "0.9.2"
