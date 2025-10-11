@@ -1,0 +1,11 @@
+[package]
+name = "ch4-main"
+version = "0.1.0"
+authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2024"
+
+[[bin]]
+name = "ch4-main"
+path = "main.rs"
+
+[dependencies]

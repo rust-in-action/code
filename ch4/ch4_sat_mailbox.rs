@@ -1,12 +1,14 @@
+#![allow(dead_code)]
+
 #[derive(Debug)]
 struct CubeSat {
-  id: u64,
-  mailbox: Mailbox,
+    id: u64,
+    mailbox: Mailbox,
 }
 
 #[derive(Debug)]
 struct Mailbox {
-  messages: Vec<Message>,
+    messages: Vec<Message>,
 }
 
 type Message = String;
@@ -25,19 +27,16 @@ impl CubeSat {
     }
 }
 
-fn main() {
+pub fn main() {
     let base = GroundStation {};
     let mut sat_a = CubeSat {
-      id: 0,
-      mailbox: Mailbox {
-        messages: vec![],
-      },
+        id: 0,
+        mailbox: Mailbox { messages: vec![] },
     };
 
     println!("t0: {:?}", sat_a);
 
-	base.send(&mut sat_a,
-	          Message::from("hello there!"));    // <1>
+    base.send(&mut sat_a, Message::from("hello there!")); // <1>
 
     println!("t1: {:?}", sat_a);
 

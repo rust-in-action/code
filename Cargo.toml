@@ -9,9 +9,11 @@ members = [
   "ch2",
   "ch2/ch2-complex",
   "ch2/ch2-mandelbrot",
+  "ch3",
   "ch3/filebasics",
   "ch3/fileresult",
   "ch3/globalerror",
+  "ch4",
 ]
 resolver = "3"
 

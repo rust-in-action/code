@@ -1,13 +1,14 @@
+#![allow(dead_code)]
 #![allow(unused_variables)]
 
 #[derive(Debug)]
 struct CubeSat {
-  id: u64,
+    id: u64,
 }
 
 #[derive(Debug)]
 struct Mailbox {
-  messages: Vec<Message>,
+    messages: Vec<Message>,
 }
 
 #[derive(Debug)]
@@ -37,9 +38,7 @@ impl Mailbox {
 
 impl GroundStation {
     fn connect(&self, sat_id: u64) -> CubeSat {
-        CubeSat {
-            id: sat_id,
-        }
+        CubeSat { id: sat_id }
     }
 
     fn send(&self, mailbox: &mut Mailbox, msg: Message) {
@@ -54,29 +53,31 @@ impl CubeSat {
 }
 
 fn fetch_sat_ids() -> Vec<u64> {
-  vec![1,2,3]
+    vec![1, 2, 3]
 }
 
+pub fn main() {
+    let mut mail = Mailbox { messages: vec![] };
 
-fn main() {
-  let mut mail = Mailbox { messages: vec![] };
+    let base = GroundStation {};
 
-  let base = GroundStation {};
+    let sat_ids = fetch_sat_ids();
 
-  let sat_ids = fetch_sat_ids();
+    for sat_id in sat_ids {
+        let sat = base.connect(sat_id);
+        let msg = Message {
+            to: sat_id,
+            content: String::from("hello"),
+        };
+        base.send(&mut mail, msg);
+    }
 
-  for sat_id in sat_ids {
-    let sat = base.connect(sat_id);
-    let msg = Message { to: sat_id, content: String::from("hello") };
-    base.send(&mut mail, msg);
-  }
+    let sat_ids = fetch_sat_ids();
 
-  let sat_ids = fetch_sat_ids();
+    for sat_id in sat_ids {
+        let sat = base.connect(sat_id);
 
-  for sat_id in sat_ids {
-    let sat = base.connect(sat_id);
-
-    let msg = sat.recv(&mut mail);
-    println!("{:?}: {:?}", sat, msg);
-  }
+        let msg = sat.recv(&mut mail);
+        println!("{:?}: {:?}", sat, msg);
+    }
 }
