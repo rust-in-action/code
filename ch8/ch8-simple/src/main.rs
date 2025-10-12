@@ -1,13 +1,13 @@
 use std::error::Error;
 
-use reqwest;
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
+    // <1>
+    let url = "http://www.rustinaction.com/";
+    let response = reqwest::get(url).await?;
 
-fn main() -> Result<(), Box<dyn Error>> {        // <1>
-  let url = "http://www.rustinaction.com/";
-  let mut response = reqwest::get(url)?;
+    let content = response.text().await?;
+    print!("{}", content);
 
-  let content = response.text()?;
-  print!("{}", content);
-
-  Ok(())
+    Ok(())
 }

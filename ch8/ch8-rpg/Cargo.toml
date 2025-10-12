@@ -1,8 +1,8 @@
 [package]
-name = "rpg"
+name = "ch8-rpg"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
-edition = "2018"
+edition = "2024"
 
 [dependencies]
-rand = "0.7"
+rand = "0.9"

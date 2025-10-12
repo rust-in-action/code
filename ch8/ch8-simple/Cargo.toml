@@ -2,8 +2,9 @@
 name = "ch8-simple"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
-edition = "2018"
+edition = "2024"
 
 [dependencies]
-reqwest = "0.9"
+reqwest = "0.12.3"
+tokio = { version = "1.47.1", features = ["full"] }
 

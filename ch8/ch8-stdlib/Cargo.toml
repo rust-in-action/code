@@ -2,6 +2,6 @@
 name = "ch8-stdlib"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
-edition = "2018"
+edition = "2024"
 
 [dependencies]
