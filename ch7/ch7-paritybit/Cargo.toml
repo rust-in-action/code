@@ -1,8 +1,8 @@
 [package]
-name = "ch7-partitybit"
+name = "ch7-paritybit"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
-edition = "2018"
+edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

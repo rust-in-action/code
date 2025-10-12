@@ -1,12 +1,14 @@
 [package]
-name = "actionkv"
+name = "ch7-actionkv"
 version = "1.0.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
-edition = "2018"
+edition = "2024"
 
 [dependencies]
 byteorder = "1.2"        # <1>
 crc = "1.7"              # <2>
+serde = "1.0.228"
+serde_derive = "1.0.228"
 
 [lib]                    # <3>
 name = "libactionkv"     # <3>

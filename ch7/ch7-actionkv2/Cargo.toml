@@ -1,8 +1,8 @@
 [package]
-name = "actionkv"
+name = "ch7-actionkv2"
 version = "2.0.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
-edition = "2018"
+edition = "2024"
 
 [dependencies]
 bincode = "1"

@@ -41,8 +41,8 @@ fn main() {
         "delete" => a.delete(key).unwrap(),
         "insert" => {
             let value = maybe_value.expect(&USAGE).as_ref(); // an update that could be added for compatibility with Rust's HashMap
-                                                             // would be for insert to return the old
-                                                             // value, if it exists
+            // would be for insert to return the old
+            // value, if it exists
             a.insert(key, value).unwrap()
         }
         "update" => {

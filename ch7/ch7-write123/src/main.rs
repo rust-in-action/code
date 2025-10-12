@@ -1,12 +1,12 @@
-use std::io::Cursor;
-use byteorder::{LittleEndian};
+use byteorder::LittleEndian;
 use byteorder::{ReadBytesExt, WriteBytesExt};
+use std::io::Cursor;
 
 fn write_numbers_to_file() -> (u32, i8, f64) {
     let mut w = vec![]; // slices implement Read and Write, and can thus act as mock files
 
-    let one: u32   = 1;
-    let two: i8    = 2;
+    let one: u32 = 1;
+    let two: i8 = 2;
     let three: f64 = 3.0;
 
     w.write_u32::<LittleEndian>(one).unwrap();

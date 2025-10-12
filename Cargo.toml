@@ -22,6 +22,16 @@ members = [
   "ch5/ch5-q",
   "ch6",
   "ch6/ch6-memscan-3",
+  "ch7/ch7-write123",
+  "ch7/ch7-serde-eg",
+  "ch7/ch7-fview",
+  "ch7/ch7-fview-str",
+  "ch7/ch7-pacific-basic",
+  "ch7/ch7-pacific-json",
+  "ch7/ch7-paritybit",
+  "ch7/ch7-actionkv1",
+  "ch7/ch7-actionkv2",
+  "ch7/ch7-actionkv",
 ]
 resolver = "3"
 

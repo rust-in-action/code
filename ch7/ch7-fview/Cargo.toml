@@ -1,6 +1,7 @@
 [package]
-name = "fview"
+name = "ch7-fview"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2024"
 
 [dependencies]
