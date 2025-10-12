@@ -33,6 +33,7 @@ members = [
   "ch7/ch7-actionkv2",
   "ch7/ch7-actionkv",
   "ch8/ch8-mac",
+  "ch8/ch8-resolve",
   "ch8/ch8-rpg",
   "ch8/ch8-simple",
   "ch8/ch8-stdlib",

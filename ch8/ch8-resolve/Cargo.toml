@@ -5,6 +5,6 @@ authors = ["Tim McNamara <author@rustinaction.com>"]
 edition = "2018"
 
 [dependencies]
-rand = "0.6"
-clap = "2.33"
-trust-dns = { version = "0.16", default-features = false }
+rand = "0.9"
+clap = "4.5.8"
+trust-dns-client = { version = "0.23.2", default-features = false }
