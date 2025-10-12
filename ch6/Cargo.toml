@@ -1,6 +1,11 @@
 [package]
-name = "ch6-memscan-1"
+name = "ch6-main"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2024"
+
+[[bin]]
+name = "ch6-main"
+path = "main.rs"
 
 [dependencies]

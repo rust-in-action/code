@@ -2,6 +2,7 @@
 name = "ch5-q"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
+edition = "2024"
 
 [lib]
 path = "src/lib.rs"

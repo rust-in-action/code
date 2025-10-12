@@ -20,6 +20,8 @@ members = [
   "ch5/ch5-cpu3",
   "ch5/ch5-cpu4",
   "ch5/ch5-q",
+  "ch6",
+  "ch6/ch6-memscan-3",
 ]
 resolver = "3"
 

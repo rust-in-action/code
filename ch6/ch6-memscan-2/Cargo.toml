@@ -1,6 +1,0 @@
-[package]
-name = "ch6-memscan-2"
-version = "0.1.0"
-authors = ["Tim McNamara <author@rustinaction.com>"]
-
-[dependencies]
