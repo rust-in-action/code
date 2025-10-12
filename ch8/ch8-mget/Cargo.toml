@@ -1,18 +1,12 @@
 [package]
-name = "mget"
+name = "ch8-mget"
 version = "0.1.0"
 authors = ["Tim McNamara <author@rustinaction.com>"]
-edition = "2018"
+edition = "2024"
 
 [dependencies]
 clap = "2"
 rand = "0.7"
-smoltcp = {
-  version = "0.6",
-  features = ["proto-igmp", "proto-ipv4", "verbose", "log"]
-}
-trust-dns = {
-  version = "0.16",
-  default-features = false
-}
+smoltcp = { version = "0.12", features = ["proto-ipv4", "verbose", "log"] }
+trust-dns = { version = "0.16", default-features = false }
 url = "2"
